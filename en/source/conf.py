@@ -45,7 +45,13 @@ html_context = {
 
 html_sidebars = {
     '**': [
+        'theme_switcher.html',
+        'language_switcher.html',
         'relations.html',
         'searchbox.html',
     ],
 }
+
+def setup(app):
+    app.add_css_file('theme.css', priority=500)
+    app.add_js_file('switcher.js', priority=500)
