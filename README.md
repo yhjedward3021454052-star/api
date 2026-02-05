@@ -1,126 +1,124 @@
-# Sphinx 多语言文档站点
+# Sphinx Multilingual Documentation Site
 
-这是一个使用 Sphinx 构建的、支持多语言的 Markdown 文档站点示例。
+A multilingual documentation site built with Sphinx, featuring language switching similar to Godot Engine documentation.
 
-## 功能特点
+## Features
 
-- 多语言支持 (中文 / English)
-- 使用 Markdown 编写文档
-- 现代化的 sphinx-rtd-theme 主题
-- 响应式设计
-- 代码高亮
-- 内置搜索功能
+- Separate builds for each language (en, zh_CN)
+- Written in Markdown
+- Modern sphinx-rtd-theme
+- Responsive design
+- Code highlighting
+- Built-in search
 
-## 快速开始
+## Quick Start
 
-### 环境要求
+### Requirements
 
 - Python 3.8+
 - pip
 
-### 安装依赖
+### Install Dependencies
 
 ```bash
 pip install --break-system-packages sphinx sphinx-intl sphinx-rtd-theme myst-parser
 ```
 
-### 构建文档
+### Build All Languages
 
 ```bash
-cd docs
-make html
+make all
 ```
 
-### 查看文档
+Or build individual languages:
 
-在浏览器中打开 `docs/build/html/index.html` 文件。
+```bash
+# Build English
+cd en && make html
 
-## 项目结构
+# Build Chinese
+cd zh_CN && make html
+```
+
+### View Documentation
+
+- English: `en/build/html/index.html`
+- Chinese: `zh_CN/build/html/index.html`
+
+## Project Structure
 
 ```
 .
-├── docs/
-│   ├── Makefile              # 构建脚本
-│   ├── BUILD.md              # 构建指南
-│   ├── source/               # 文档源文件
-│   │   ├── conf.py          # Sphinx 配置
-│   │   ├── index.rst        # 主索引文件
-│   │   ├── index.md         # 首页内容
-│   │   ├── zh_CN/           # 中文文档目录
-│   │   │   └── guide.md
-│   │   ├── en/              # 英文文档目录
-│   │   │   └── guide.md
-│   │   ├── _static/         # 静态资源
-│   │   └── _templates/      # 自定义模板
-│   ├── locale/              # 翻译文件
-│   └── build/               # 构建输出
-│       └── html/            # HTML 文件
-└── README.md                # 本文件
+├── en/
+│   ├── Makefile
+│   ├── make.bat
+│   └── source/
+│       ├── conf.py
+│       ├── index.rst
+│       ├── index.md
+│       └── guide.md
+├── zh_CN/
+│   ├── Makefile
+│   ├── make.bat
+│   └── source/
+│       ├── conf.py
+│       ├── index.rst
+│       ├── index.md
+│       └── guide.md
+├── Makefile
+└── README.md
 ```
 
-## 添加新文档
+## Adding New Documentation
 
-### 添加中文文档
+### English Documentation
 
-在 `docs/source/zh_CN/` 目录下创建新的 Markdown 文件，然后在 `index.rst` 的 toctree 中引用。
+1. Create `.md` files in `en/source/`
+2. Update `en/source/index.rst` to include new files in toctree
 
-### 添加英文文档
+### Chinese Documentation
 
-在 `docs/source/en/` 目录下创建新的 Markdown 文件，确保文件名与中文版本对应。
+1. Create `.md` files in `zh_CN/source/`
+2. Update `zh_CN/source/index.rst` to include new files in toctree
 
-## 多语言支持
+3. Keep filenames consistent between languages
 
-### 生成翻译模板
+## Language Switching
 
-```bash
-cd docs
-sphinx-build -b gettext source locale
-sphinx-intl update -p locale -l en
-```
+The documentation uses separate builds for each language, similar to Godot Engine documentation:
 
-### 翻译内容
+- `/en/` - English version
+- `/zh_CN/` - Chinese version
 
-编辑 `locale/en/LC_MESSAGES/docs.po` 文件进行翻译。
+## Tech Stack
 
-### 构建翻译后的文档
+- **Sphinx**: Documentation framework
+- **MyST-Parser**: Markdown parser
+- **sphinx-rtd-theme**: Read the Docs theme
+- **sphinx-intl**: Multilingual support extension
 
-```bash
-sphinx-intl build
-make html
-```
+## Configuration
 
-## 主题定制
+Each language has its own `source/conf.py` with settings for:
 
-主题配置在 `docs/source/conf.py` 文件中，可以自定义：
+- Project metadata (name, version)
+- Language code
+- Theme options
+- Extensions
 
-- 颜色方案
-- 导航栏
-- 搜索功能
-- 版本显示
+## Deployment
 
-## 部署
+Build output directories:
+- `en/build/html/` - English static site
+- `zh_CN/build/html/` - Chinese static site
 
-生成的 HTML 文件位于 `docs/build/html/` 目录，可以部署到:
+Deploy these directories to any static hosting service:
 
 - GitHub Pages
 - GitLab Pages
 - Netlify
 - Vercel
-- 或任何静态网站托管服务
 
-## 技术栈
-
-- **Sphinx**: 文档生成框架
-- **MyST-Parser**: Markdown 解析器
-- **sphinx-rtd-theme**: Read the Docs 主题
-- **sphinx-intl**: 多语言支持扩展
-
-## 资源链接
-
-- [Sphinx 官方文档](https://www.sphinx-doc.org/)
-- [MyST-Parser 文档](https://myst-parser.readthedocs.io/)
-- [sphinx-rtd-theme 文档](https://sphinx-rtd-theme.readthedocs.io/)
-
-## 许可证
+## License
 
 Copyright © 2026 MonkeyCode
