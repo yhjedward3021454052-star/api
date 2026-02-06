@@ -81,6 +81,71 @@ function setTheme(theme) {
         document.getElementById('theme-icon').innerHTML = '☀️';
     }
 }
+        
+        document.querySelectorAll('.wy-menu-vertical a').forEach(el => {
+            el.style.color = '#b0b0b0';
+        });
+        
+        document.querySelectorAll('.rst-content .admonition, .rst-content .note, .rst-content .warning').forEach(el => {
+            el.style.background = '#2a2a2a';
+            el.style.borderColor = '#444';
+        });
+        
+        document.querySelectorAll('.rst-content table').forEach(el => {
+            el.style.background = '#2a2a2a';
+        });
+        
+        document.querySelectorAll('.rst-content code, .rst-content pre').forEach(el => {
+            el.style.background = '#2a2a2a';
+            el.style.color = '#e0e0e0';
+        });
+        
+        document.querySelectorAll('.rst-content blockquote').forEach(el => {
+            el.style.background = '#2a2a2a';
+            el.style.borderLeftColor = '#666';
+        });
+        
+        localStorage.setItem('theme', 'dark');
+        document.getElementById('theme-icon').innerHTML = '🌙';
+    } else {
+        document.body.classList.remove('dark-theme');
+        sidebar.style.background = '';
+        contentWrap.style.background = '';
+        content.style.background = '';
+        content.style.color = '';
+        searchBox.style.background = '';
+        
+        if (documentBody) {
+            documentBody.style.background = '';
+        }
+        
+        document.querySelectorAll('.wy-menu-vertical a').forEach(el => {
+            el.style.color = '';
+        });
+        
+        document.querySelectorAll('.rst-content .admonition, .rst-content .note, .rst-content .warning').forEach(el => {
+            el.style.background = '';
+            el.style.borderColor = '';
+        });
+        
+        document.querySelectorAll('.rst-content table').forEach(el => {
+            el.style.background = '';
+        });
+        
+        document.querySelectorAll('.rst-content code, .rst-content pre').forEach(el => {
+            el.style.background = '';
+            el.style.color = '';
+        });
+        
+        document.querySelectorAll('.rst-content blockquote').forEach(el => {
+            el.style.background = '';
+            el.style.borderLeftColor = '';
+        });
+        
+        localStorage.setItem('theme', 'light');
+        document.getElementById('theme-icon').innerHTML = '☀️';
+    }
+}
 
 function toggleTheme() {
     const currentTheme = localStorage.getItem('theme') || 'light';
