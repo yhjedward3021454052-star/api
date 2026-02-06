@@ -44,6 +44,38 @@ function toggleLanguageDropdown() {
     }
 }
 
+function filterMenuByLanguage() {
+    const currentPath = window.location.pathname;
+    const isZh = currentPath.includes('/zh_CN/');
+    
+    const captions = document.querySelectorAll('.wy-menu-vertical p.caption');
+    
+    captions.forEach(caption => {
+        const text = caption.textContent;
+        const parentUl = caption.nextElementSibling;
+        
+        if (parentUl) {
+            if (isZh) {
+                if (text.includes('English')) {
+                    caption.style.display = 'none';
+                    parentUl.style.display = 'none';
+                } else if (text.includes('中文')) {
+                    caption.style.display = 'block';
+                    parentUl.style.display = 'block';
+                }
+            } else {
+                if (text.includes('中文')) {
+                    caption.style.display = 'none';
+                    parentUl.style.display = 'none';
+                } else if (text.includes('English')) {
+                    caption.style.display = 'block';
+                    parentUl.style.display = 'block';
+                }
+            }
+        }
+    });
+}
+
 document.addEventListener('click', function(event) {
     const dropdown = document.querySelector('.language-dropdown');
     const icon = document.querySelector('.switcher-icon');
@@ -65,4 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (langIcon) {
         langIcon.innerHTML = isZh ? '🇨🇳' : '🇺🇸';
     }
+    
+    filterMenuByLanguage();
 });
