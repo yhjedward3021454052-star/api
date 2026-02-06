@@ -51,6 +51,7 @@ html_sidebars = {
     '**': [
         'relations.html',
         'searchbox.html',
+        'language_theme_switcher.html',
     ],
 }
 
