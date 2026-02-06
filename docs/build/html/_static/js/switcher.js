@@ -153,15 +153,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     filterMenuByLanguage();
-    
-    setTimeout(function() {
-        const searchForm = document.getElementById('rtd-search-form');
-        if (searchForm) {
-            const searchInput = searchForm.querySelector('input[type="text"]');
-            if (searchInput) {
-                searchInput.value = '';
-                searchForm.action = '../search.html';
-            }
-        }
-    }, 500);
 });
