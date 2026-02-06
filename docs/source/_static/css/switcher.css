@@ -4,7 +4,7 @@
     gap: 20px;
     padding: 15px;
     margin-top: 30px;
-    border-top: 1px solid #e1e4e8;
+    border-top: 1px solid var(--code-block-border);
 }
 
 .switcher-item {
@@ -15,22 +15,22 @@
     font-size: 20px;
     cursor: pointer;
     padding: 8px 12px;
-    border: 2px solid #e1e4e8;
+    border: 2px solid var(--button-border);
     border-radius: 8px;
     transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: white;
+    background: var(--button-bg);
 }
 
 .switcher-icon:hover {
-    border-color: #007aff;
+    border-color: var(--button-hover-bg);
     background: rgba(0, 122, 255, 0.05);
 }
 
 .switcher-icon.active {
-    border-color: #007aff;
+    border-color: var(--button-hover-bg);
     background: rgba(0, 122, 255, 0.1);
 }
 
@@ -40,8 +40,8 @@
     bottom: calc(100% + 8px);
     left: 50%;
     transform: translateX(-50%);
-    background: white;
-    border: 2px solid #e1e4e8;
+    background: var(--button-bg);
+    border: 2px solid var(--button-border);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     min-width: 150px;
@@ -69,12 +69,12 @@
 
 .language-dropdown a:hover {
     background: rgba(0, 122, 255, 0.1);
-    color: #007aff;
+    color: var(--button-hover-bg);
 }
 
 #theme-toggle {
-    background: white;
-    border: 2px solid #e1e4e8;
+    background: var(--button-bg);
+    border: 2px solid var(--button-border);
     cursor: pointer;
     padding: 8px 12px;
     border-radius: 8px;
@@ -83,13 +83,13 @@
 }
 
 #theme-toggle:hover {
-    border-color: #007aff;
+    border-color: var(--button-hover-bg);
     background: rgba(0, 122, 255, 0.05);
 }
 
 div.highlight {
-    background: #f8f9fa;
-    border: 1px solid #e1e4e8;
+    background: var(--code-block-bg);
+    border: 1px solid var(--code-block-border);
     border-radius: 4px;
     padding: 12px;
     margin: 12px 0;
@@ -124,12 +124,12 @@ div.highlight.with-lines .line-number {
     top: 0;
     bottom: 0;
     width: 40px;
-    background: #f0f0f0;
-    border-right: 1px solid #e1e4e8;
+    background: var(--line-number-bg);
+    border-right: 1px solid var(--line-number-border);
     text-align: right;
     padding: 12px 8px;
     font-size: 12px;
-    color: white;
+    color: var(--line-number-color);
     line-height: 1.6;
     user-select: none;
     overflow: hidden;
@@ -156,8 +156,8 @@ div.highlight.with-lines .highlight-buttons {
 
 .copy-button,
 .line-button {
-    background: white;
-    border: 1px solid #e1e4e8;
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
     border-radius: 4px;
     padding: 4px 8px;
     font-size: 12px;
@@ -168,14 +168,14 @@ div.highlight.with-lines .highlight-buttons {
 
 .copy-button:hover,
 .line-button:hover {
-    background: #007aff;
-    border-color: #007aff;
-    color: white;
+    background: var(--button-hover-bg);
+    border-color: var(--button-hover-border);
+    color: var(--button-hover-color);
 }
 
 .copy-button.copied,
 .line-button.active {
-    background: #28a745;
-    border-color: #28a745;
-    color: white;
+    background: var(--button-active-bg);
+    border-color: var(--button-active-border);
+    color: var(--button-active-color);
 }

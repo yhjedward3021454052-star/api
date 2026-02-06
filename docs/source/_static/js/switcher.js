@@ -6,6 +6,7 @@ function setTheme(theme) {
     const documentBody = document.querySelector('[role="main"]');
     
     if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
         sidebar.style.background = '#2d2d2d';
         contentWrap.style.background = '#2d2d2d';
         content.style.background = '#1e1e1e';
@@ -39,15 +40,10 @@ function setTheme(theme) {
             el.style.borderLeftColor = '#666';
         });
         
-        document.querySelectorAll('div.highlight.with-lines .line-number').forEach(el => {
-            el.style.background = '#2a2a2a';
-            el.style.borderColor = '#444';
-            el.style.color = '#666';
-        });
-        
         localStorage.setItem('theme', 'dark');
         document.getElementById('theme-icon').innerHTML = '🌙';
     } else {
+        document.body.classList.remove('dark-theme');
         sidebar.style.background = '';
         contentWrap.style.background = '';
         content.style.background = '';
@@ -79,12 +75,6 @@ function setTheme(theme) {
         document.querySelectorAll('.rst-content blockquote').forEach(el => {
             el.style.background = '';
             el.style.borderLeftColor = '';
-        });
-        
-        document.querySelectorAll('div.highlight.with-lines .line-number').forEach(el => {
-            el.style.background = '';
-            el.style.borderColor = '';
-            el.style.color = '';
         });
         
         localStorage.setItem('theme', 'light');
