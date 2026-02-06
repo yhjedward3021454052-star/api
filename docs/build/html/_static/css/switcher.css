@@ -4,7 +4,7 @@
     gap: 20px;
     padding: 15px;
     margin-top: 30px;
-    border-top: 1px solid var(--code-block-border);
+    border-top: 1px solid var(--divider-color);
 }
 
 .switcher-item {
@@ -111,7 +111,7 @@ div.highlight span {
 div.highlight.with-lines {
     padding-left: 0;
     padding-right: 0;
-    padding-top: 50px;
+    padding-top: 0;
 }
 
 div.highlight.with-lines pre {
@@ -149,36 +149,4 @@ div.highlight.with-lines .line-number .line-num {
     display: flex;
     gap: 5px;
     z-index: 100;
-}
-
-div.highlight.with-lines .highlight-buttons {
-    top: 8px;
-    right: 8px;
-}
-
-.copy-button,
-.line-button {
-    background: var(--button-bg);
-    border: 1px solid var(--button-border);
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 100;
-    color: var(--button-text);
-}
-
-.copy-button:hover,
-.line-button:hover {
-    background: var(--button-hover-bg);
-    border-color: var(--button-hover-border);
-    color: var(--button-hover-color);
-}
-
-.copy-button.copied,
-.line-button.active {
-    background: var(--button-active-bg);
-    border-color: var(--button-active-border);
-    color: var(--button-active-color);
 }
