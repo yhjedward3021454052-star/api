@@ -39,7 +39,9 @@ function setTheme(theme) {
             el.style.borderLeftColor = '#666';
         });
         
-        document.querySelectorAll('div.highlight.with-lines span::before').forEach(el => {
+        document.querySelectorAll('div.highlight.with-lines .line-number').forEach(el => {
+            el.style.background = '#2a2a2a';
+            el.style.borderColor = '#444';
             el.style.color = '#666';
         });
         
@@ -79,7 +81,9 @@ function setTheme(theme) {
             el.style.borderLeftColor = '';
         });
         
-        document.querySelectorAll('div.highlight.with-lines span::before').forEach(el => {
+        document.querySelectorAll('div.highlight.with-lines .line-number').forEach(el => {
+            el.style.background = '';
+            el.style.borderColor = '';
             el.style.color = '';
         });
         
@@ -182,9 +186,34 @@ function toggleLineNumbers(button) {
     
     if (highlightDiv.classList.contains('with-lines')) {
         highlightDiv.classList.remove('with-lines');
+        
+        const lineNumberDiv = highlightDiv.querySelector('.line-number');
+        if (lineNumberDiv) {
+            lineNumberDiv.remove();
+        }
+        
         button.classList.remove('active');
     } else {
         highlightDiv.classList.add('with-lines');
+        
+        const preElement = highlightDiv.querySelector('pre');
+        if (preElement) {
+            const lineNumberDiv = document.createElement('div');
+            lineNumberDiv.className = 'line-number';
+            
+            const lines = preElement.textContent.split('\n');
+            lines.forEach((line, index) => {
+                if (index < lines.length) {
+                    const lineNum = document.createElement('span');
+                    lineNum.className = 'line-num';
+                    lineNum.textContent = (index + 1);
+                    lineNumberDiv.appendChild(lineNum);
+                }
+            });
+            
+            highlightDiv.insertBefore(lineNumberDiv, preElement);
+        }
+        
         button.classList.add('active');
     }
 }
