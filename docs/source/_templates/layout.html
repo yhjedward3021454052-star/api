@@ -76,6 +76,10 @@
 #theme-toggle:hover {
     background: rgba(0, 122, 255, 0.1);
 }
+
+.hidden-section {
+    display: none !important;
+}
 </style>
 
 <script>
@@ -110,6 +114,16 @@ function setTheme(theme) {
 function toggleTheme() {
     const currentTheme = localStorage.getItem('theme') || 'light';
     setTheme(currentTheme === 'light' ? 'dark' : 'light');
+}
+
+function switchLanguage(lang) {
+    localStorage.setItem('language', lang);
+    const currentPath = window.location.pathname;
+    if (lang === 'zh') {
+        window.location.href = currentPath.replace('/en/', '/zh_CN/');
+    } else {
+        window.location.href = currentPath.replace('/zh_CN/', '/en/');
+    }
 }
 
 window.addEventListener('DOMContentLoaded', function() {
