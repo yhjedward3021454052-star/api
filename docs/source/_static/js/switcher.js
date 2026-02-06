@@ -147,7 +147,13 @@ function filterMenuByLanguage() {
 function updateSearchForm() {
     const searchForm = document.getElementById('rtd-search-form');
     if (searchForm) {
-        searchForm.action = '../../search.html';
+        const currentPath = window.location.pathname;
+        
+        if (currentPath.endsWith('/search.html')) {
+            searchForm.action = 'search.html';
+        } else {
+            searchForm.action = 'search.html';
+        }
     }
 }
 
