@@ -41,7 +41,10 @@ function setTheme(theme) {
         });
         
         localStorage.setItem('theme', 'dark');
-        document.getElementById('theme-icon').innerHTML = '🌙';
+        const themeIcon = document.getElementById('theme-icon');
+        if (themeIcon) {
+            themeIcon.innerHTML = '🌙';
+        }
     } else {
         document.body.classList.remove('dark-theme');
         sidebar.style.background = '';
@@ -78,72 +81,10 @@ function setTheme(theme) {
         });
         
         localStorage.setItem('theme', 'light');
-        document.getElementById('theme-icon').innerHTML = '☀️';
-    }
-}
-        
-        document.querySelectorAll('.wy-menu-vertical a').forEach(el => {
-            el.style.color = '#b0b0b0';
-        });
-        
-        document.querySelectorAll('.rst-content .admonition, .rst-content .note, .rst-content .warning').forEach(el => {
-            el.style.background = '#2a2a2a';
-            el.style.borderColor = '#444';
-        });
-        
-        document.querySelectorAll('.rst-content table').forEach(el => {
-            el.style.background = '#2a2a2a';
-        });
-        
-        document.querySelectorAll('.rst-content code, .rst-content pre').forEach(el => {
-            el.style.background = '#2a2a2a';
-            el.style.color = '#e0e0e0';
-        });
-        
-        document.querySelectorAll('.rst-content blockquote').forEach(el => {
-            el.style.background = '#2a2a2a';
-            el.style.borderLeftColor = '#666';
-        });
-        
-        localStorage.setItem('theme', 'dark');
-        document.getElementById('theme-icon').innerHTML = '🌙';
-    } else {
-        document.body.classList.remove('dark-theme');
-        sidebar.style.background = '';
-        contentWrap.style.background = '';
-        content.style.background = '';
-        content.style.color = '';
-        searchBox.style.background = '';
-        
-        if (documentBody) {
-            documentBody.style.background = '';
+        const themeIcon = document.getElementById('theme-icon');
+        if (themeIcon) {
+            themeIcon.innerHTML = '☀️';
         }
-        
-        document.querySelectorAll('.wy-menu-vertical a').forEach(el => {
-            el.style.color = '';
-        });
-        
-        document.querySelectorAll('.rst-content .admonition, .rst-content .note, .rst-content .warning').forEach(el => {
-            el.style.background = '';
-            el.style.borderColor = '';
-        });
-        
-        document.querySelectorAll('.rst-content table').forEach(el => {
-            el.style.background = '';
-        });
-        
-        document.querySelectorAll('.rst-content code, .rst-content pre').forEach(el => {
-            el.style.background = '';
-            el.style.color = '';
-        });
-        
-        document.querySelectorAll('.rst-content blockquote').forEach(el => {
-            el.style.background = '';
-            el.style.borderLeftColor = '';
-        });
-        
-        localStorage.setItem('theme', 'light');
-        document.getElementById('theme-icon').innerHTML = '☀️';
     }
 }
 
@@ -156,12 +97,18 @@ function toggleLanguageDropdown() {
     const dropdown = document.querySelector('.language-dropdown');
     const icon = document.querySelector('.switcher-icon');
     
-    if (dropdown.classList.contains('show')) {
+    if (dropdown && dropdown.classList.contains('show')) {
         dropdown.classList.remove('show');
-        icon.classList.remove('active');
+        if (icon) {
+            icon.classList.remove('active');
+        }
     } else {
-        dropdown.classList.add('show');
-        icon.classList.add('active');
+        if (dropdown) {
+            dropdown.classList.add('show');
+        }
+        if (icon) {
+            icon.classList.add('active');
+        }
     }
 }
 
@@ -239,7 +186,7 @@ function copyCode(button) {
 function toggleLineNumbers(button) {
     const highlightDiv = button.closest('.highlight');
     
-    if (highlightDiv.classList.contains('with-lines')) {
+    if (highlightDiv && highlightDiv.classList.contains('with-lines')) {
         highlightDiv.classList.remove('with-lines');
         
         const lineNumberDiv = highlightDiv.querySelector('.line-number');
@@ -247,29 +194,35 @@ function toggleLineNumbers(button) {
             lineNumberDiv.remove();
         }
         
-        button.classList.remove('active');
-    } else {
-        highlightDiv.classList.add('with-lines');
-        
-        const preElement = highlightDiv.querySelector('pre');
-        if (preElement) {
-            const lineNumberDiv = document.createElement('div');
-            lineNumberDiv.className = 'line-number';
-            
-            const lines = preElement.textContent.split('\n');
-            lines.forEach((line, index) => {
-                if (index < lines.length) {
-                    const lineNum = document.createElement('span');
-                    lineNum.className = 'line-num';
-                    lineNum.textContent = (index + 1);
-                    lineNumberDiv.appendChild(lineNum);
-                }
-            });
-            
-            highlightDiv.insertBefore(lineNumberDiv, preElement);
+        if (button) {
+            button.classList.remove('active');
         }
-        
-        button.classList.add('active');
+    } else {
+        if (highlightDiv) {
+            highlightDiv.classList.add('with-lines');
+            
+            const preElement = highlightDiv.querySelector('pre');
+            if (preElement) {
+                const lineNumberDiv = document.createElement('div');
+                lineNumberDiv.className = 'line-number';
+                
+                const lines = preElement.textContent.split('\n');
+                lines.forEach((line, index) => {
+                    if (index < lines.length) {
+                        const lineNum = document.createElement('span');
+                        lineNum.className = 'line-num';
+                        lineNum.textContent = (index + 1);
+                        lineNumberDiv.appendChild(lineNum);
+                    }
+                });
+                
+                highlightDiv.insertBefore(lineNumberDiv, preElement);
+            }
+            
+            if (button) {
+                button.classList.add('active');
+            }
+        }
     }
 }
 
@@ -306,7 +259,7 @@ document.addEventListener('click', function(event) {
     const dropdown = document.querySelector('.language-dropdown');
     const icon = document.querySelector('.switcher-icon');
     
-    if (!dropdown.contains(event.target) && !icon.contains(event.target)) {
+    if (dropdown && !dropdown.contains(event.target) && icon && !icon.contains(event.target)) {
         dropdown.classList.remove('show');
         icon.classList.remove('active');
     }
