@@ -33,6 +33,7 @@ html_static_path = ['_static']
 
 html_theme_options = {
     'prev_next_buttons_location': 'both',
+    'navigation_depth': 4,
 }
 
 html_context = {
@@ -45,15 +46,15 @@ html_context = {
     'github_user': 'yhjedward3021454052-star',
     'github_repo': 'api',
     'github_version': 'main',
+    'conf_py_path': '/docs/source/',
 }
 
 html_sidebars = {
     '**': [
         'relations.html',
         'searchbox.html',
-        'sidebar_extra.html',
     ],
 }
 
 def setup(app):
-    app.add_css_file('custom.css', priority=500)
+    pass

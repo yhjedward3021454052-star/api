@@ -1,0 +1,37 @@
+{% extends "!layout.html" %}
+
+{% block document %}
+<script>
+function setTheme(theme) {
+    const sidebar = document.querySelector('.wy-nav-side');
+    const content = document.querySelector('.wy-nav-content');
+    const searchBox = document.querySelector('.wy-side-nav-search');
+    
+    if (theme === 'dark') {
+        sidebar.style.background = '#2d2d2d';
+        content.style.background = '#1e1e1e';
+        content.style.color = '#e0e0e0';
+        searchBox.style.background = '#1e1e1e';
+        document.querySelectorAll('.wy-menu-vertical a').forEach(el => {
+            el.style.color = '#b0b0b0';
+        });
+        localStorage.setItem('theme', 'dark');
+    } else {
+        sidebar.style.background = '';
+        content.style.background = '';
+        content.style.color = '';
+        searchBox.style.background = '';
+        document.querySelectorAll('.wy-menu-vertical a').forEach(el => {
+            el.style.color = '';
+        });
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+});
+</script>
+{{ super() }}
+{% endblock %}
