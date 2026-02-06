@@ -18,6 +18,20 @@ extensions = [
     'myst_parser',
 ]
 
+# MyST-Parser configuration
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "fieldlist",
+    "html_admonition",
+    "html_image",
+    "replacements",
+    "smartquotes",
+    "substitution",
+    "tasklist",
+]
+
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
@@ -34,6 +48,12 @@ html_static_path = ['_static']
 html_theme_options = {
     'prev_next_buttons_location': 'both',
     'navigation_depth': 4,
+    'collapse_navigation': False,
+    'sticky_navigation': True,
+    'includehidden': True,
+    'titles_only': False,
+    'logo_only': False,
+    'style_nav_header_background': '#2980B9',
 }
 
 pygments_style = 'dracula'
@@ -60,4 +80,6 @@ html_sidebars = {
 }
 
 def setup(app):
-    pass
+    app.add_css_file('css/custom.css')
+    app.add_css_file('css/switcher.css')
+    app.add_js_file('js/switcher.js')

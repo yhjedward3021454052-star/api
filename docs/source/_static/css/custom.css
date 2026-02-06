@@ -71,3 +71,73 @@ body.light-theme {
     --blockquote-bg: #f8f9fa;
     --blockquote-border: #e1e4e8;
 }
+
+/* Smooth transitions */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.wy-nav-side,
+.wy-nav-content-wrap,
+.wy-nav-content {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Admonition styling - Godot-like */
+.rst-content .admonition {
+    padding: 12px;
+    margin-bottom: 16px;
+    border-left: 4px solid;
+    border-radius: 4px;
+    background: var(--admonition-bg);
+}
+
+.rst-content .admonition.note {
+    border-left-color: #2196F3;
+}
+
+.rst-content .admonition.warning {
+    border-left-color: #ff9800;
+}
+
+.rst-content .admonition.tip {
+    border-left-color: #4caf50;
+}
+
+.rst-content .admonition.danger,
+.rst-content .admonition.error {
+    border-left-color: #f44336;
+}
+
+.rst-content .admonition-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Better code styling */
+code.literal {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 90%;
+}
+
+/* Table styling */
+.rst-content table.docutils {
+    border-collapse: collapse;
+    border: 1px solid var(--admonition-border);
+    width: 100%;
+}
+
+.rst-content table.docutils th,
+.rst-content table.docutils td {
+    padding: 8px 12px;
+    border: 1px solid var(--admonition-border);
+}
+
+.rst-content table.docutils th {
+    background: var(--admonition-bg);
+    font-weight: bold;
+}

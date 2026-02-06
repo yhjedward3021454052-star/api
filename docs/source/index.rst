@@ -7,6 +7,7 @@ Welcome to Multilingual Documentation
    
    en/index
    en/guide
+   en/features
 
 .. toctree::
    :maxdepth: 2
@@ -14,3 +15,4 @@ Welcome to Multilingual Documentation
    
    zh_CN/index
    zh_CN/guide
+   zh_CN/features
