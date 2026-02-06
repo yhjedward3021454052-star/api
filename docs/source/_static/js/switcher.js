@@ -154,19 +154,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     filterMenuByLanguage();
     
-    const searchInput = document.querySelector('#rtd-search-form input[type="text"]');
-    if (searchInput) {
-        searchInput.setAttribute('placeholder', 'Search docs');
-        
-        const searchForm = document.querySelector('#rtd-search-form');
+    setTimeout(function() {
+        const searchForm = document.getElementById('rtd-search-form');
         if (searchForm) {
-            searchForm.addEventListener('submit', function(e) {
-                const query = searchInput.value.trim();
-                if (query) {
-                    window.location.href = searchForm.action + '?q=' + encodeURIComponent(query);
-                }
-                e.preventDefault();
-            });
+            const searchInput = searchForm.querySelector('input[type="text"]');
+            if (searchInput) {
+                searchInput.value = '';
+                searchForm.action = '../search.html';
+            }
         }
-    }
+    }, 500);
 });
