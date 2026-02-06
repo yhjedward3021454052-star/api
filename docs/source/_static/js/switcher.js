@@ -123,22 +123,12 @@ function filterMenuByLanguage() {
         const parentUl = caption.nextElementSibling;
         
         if (parentUl) {
-            if (isZh) {
-                if (text.includes('English')) {
-                    caption.style.display = 'none';
-                    parentUl.style.display = 'none';
-                } else if (text.includes('中文')) {
-                    caption.style.display = 'block';
-                    parentUl.style.display = 'block';
-                }
-            } else {
-                if (text.includes('中文')) {
-                    caption.style.display = 'none';
-                    parentUl.style.display = 'none';
-                } else if (text.includes('English')) {
-                    caption.style.display = 'block';
-                    parentUl.style.display = 'block';
-                }
+            if (text.includes('English')) {
+                caption.style.display = 'none';
+                parentUl.style.display = 'none';
+            } else if (text.includes('中文')) {
+                caption.style.display = 'block';
+                parentUl.style.display = 'block';
             }
         }
     });
