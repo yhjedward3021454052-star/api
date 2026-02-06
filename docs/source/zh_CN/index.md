@@ -29,7 +29,7 @@ make html
 
 ## 文档结构
 
-```
+```text
 .
 ├── Makefile
 ├── source/

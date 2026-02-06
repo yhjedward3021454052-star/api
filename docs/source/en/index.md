@@ -29,7 +29,7 @@ Open `build/en/html/index.html` for English or `build/zh_CN/html/index.html` for
 
 ## Documentation Structure
 
-```
+```text
 .
 ├── Makefile
 ├── source/

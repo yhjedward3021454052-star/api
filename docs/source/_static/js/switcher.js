@@ -151,8 +151,18 @@ const themeManager = new ThemeManager();
 // Language Menu
 class LanguageManager {
     constructor() {
-        this.currentLanguage = localStorage.getItem('language') || 'zh_CN';
+        this.currentLanguage = this.detectLanguage();
         this.init();
+    }
+    
+    detectLanguage() {
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('/en/')) {
+            return 'en';
+        } else if (currentPath.includes('/zh_CN/')) {
+            return 'zh_CN';
+        }
+        return localStorage.getItem('language') || 'zh_CN';
     }
     
     init() {
@@ -176,11 +186,21 @@ class LanguageManager {
             
             if (parentUl) {
                 if (text.includes('English')) {
-                    caption.style.display = 'none';
-                    parentUl.style.display = 'none';
+                    if (this.currentLanguage === 'en') {
+                        caption.style.display = 'block';
+                        parentUl.style.display = 'block';
+                    } else {
+                        caption.style.display = 'none';
+                        parentUl.style.display = 'none';
+                    }
                 } else if (text.includes('中文')) {
-                    caption.style.display = 'block';
-                    parentUl.style.display = 'block';
+                    if (this.currentLanguage === 'zh_CN') {
+                        caption.style.display = 'block';
+                        parentUl.style.display = 'block';
+                    } else {
+                        caption.style.display = 'none';
+                        parentUl.style.display = 'none';
+                    }
                 }
             }
         });
@@ -189,9 +209,18 @@ class LanguageManager {
     setLanguage(lang) {
         this.currentLanguage = lang;
         localStorage.setItem('language', lang);
-        this.updateIcons();
-        this.filterMenu();
-        window.location.href = lang === 'zh_CN' ? '../zh_CN/index.html' : '../en/index.html';
+        
+        // Get the current page name
+        const currentPath = window.location.pathname;
+        const pathParts = currentPath.split('/');
+        const currentPage = pathParts[pathParts.length - 1] || 'index.html';
+        
+        // Build the new URL
+        if (lang === 'zh_CN') {
+            window.location.href = '../zh_CN/' + currentPage;
+        } else {
+            window.location.href = '../en/' + currentPage;
+        }
     }
 }
 
@@ -418,4 +447,8 @@ function toggleLanguageDropdown() {
             icon.classList.add('active');
         }
     }
+}
+
+function switchLanguage(lang) {
+    languageManager.setLanguage(lang);
 }

@@ -1,5 +1,43 @@
-/build/
+# Build output
+/docs/build/
+build/
+_build/
+
+# Python
 *.pyc
 __pycache__/
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
+
+# Sphinx
 *.mo
+.doctrees/
+_static/
+_templates/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
