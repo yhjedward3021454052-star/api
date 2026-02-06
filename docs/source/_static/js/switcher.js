@@ -144,6 +144,32 @@ function updateSearchForm() {
     }
 }
 
+function addCopyButtons() {
+    document.querySelectorAll('div.highlight').forEach(highlightDiv => {
+        if (!highlightDiv.querySelector('.copy-button')) {
+            const copyButton = document.createElement('button');
+            copyButton.className = 'copy-button';
+            copyButton.textContent = 'Copy';
+            copyButton.addEventListener('click', async function() {
+                const code = highlightDiv.querySelector('code').textContent;
+                try {
+                    await navigator.clipboard.writeText(code);
+                    copyButton.textContent = 'Copied!';
+                    copyButton.classList.add('copied');
+                    setTimeout(() => {
+                        copyButton.textContent = 'Copy';
+                        copyButton.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+            });
+            highlightDiv.style.position = 'relative';
+            highlightDiv.appendChild(copyButton);
+        }
+    });
+}
+
 document.addEventListener('click', function(event) {
     const dropdown = document.querySelector('.language-dropdown');
     const icon = document.querySelector('.switcher-icon');
@@ -168,4 +194,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
     filterMenuByLanguage();
     updateSearchForm();
+    addCopyButtons();
 });

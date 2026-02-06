@@ -93,6 +93,7 @@ div.highlight {
     border-radius: 4px;
     padding: 12px;
     margin: 12px 0;
+    position: relative;
 }
 
 div.highlight pre {
@@ -105,4 +106,30 @@ div.highlight code {
     background: transparent;
     font-size: 14px;
     line-height: 1.6;
+}
+
+.copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.copy-button:hover {
+    background: #007aff;
+    border-color: #007aff;
+    color: white;
+}
+
+.copy-button.copied {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
 }
