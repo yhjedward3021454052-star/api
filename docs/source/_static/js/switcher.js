@@ -194,9 +194,7 @@ function toggleLineNumbers(button) {
             lineNumberDiv.remove();
         }
         
-        if (button) {
-            button.classList.remove('active');
-        }
+        button.classList.remove('active');
     } else {
         if (highlightDiv) {
             highlightDiv.classList.add('with-lines');
@@ -212,6 +210,9 @@ function toggleLineNumbers(button) {
                         const lineNum = document.createElement('span');
                         lineNum.className = 'line-num';
                         lineNum.textContent = (index + 1);
+                        lineNum.style.display = 'block';
+                        lineNum.style.height = '1.6em';
+                        lineNum.style.lineHeight = '1.6';
                         lineNumberDiv.appendChild(lineNum);
                     }
                 });
@@ -219,9 +220,7 @@ function toggleLineNumbers(button) {
                 highlightDiv.insertBefore(lineNumberDiv, preElement);
             }
             
-            if (button) {
-                button.classList.add('active');
-            }
+            button.classList.add('active');
         }
     }
 }
