@@ -136,12 +136,40 @@ function updateSearchForm() {
     
     const searchForm = document.getElementById('rtd-search-form');
     if (searchForm) {
-        if (isZh) {
-            searchForm.action = '../../search.html';
-        } else {
-            searchForm.action = '../../search.html';
-        }
+        searchForm.action = '../../search.html';
     }
+}
+
+function copyCode(button) {
+    const highlightDiv = button.closest('.highlight');
+    const codeElement = highlightDiv.querySelector('code');
+    const textToCopy = codeElement.textContent || codeElement.innerText;
+    
+    navigator.clipboard.writeText(textToCopy).then(function() {
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        button.classList.add('copied');
+        
+        setTimeout(function() {
+            button.textContent = originalText;
+            button.classList.remove('copied');
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Copy failed:', err);
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        
+        button.textContent = 'Copied!';
+        button.classList.add('copied');
+        setTimeout(function() {
+            button.textContent = 'Copy';
+            button.classList.remove('copied');
+        }, 2000);
+    });
 }
 
 function addCopyButtons() {
@@ -150,19 +178,8 @@ function addCopyButtons() {
             const copyButton = document.createElement('button');
             copyButton.className = 'copy-button';
             copyButton.textContent = 'Copy';
-            copyButton.addEventListener('click', async function() {
-                const code = highlightDiv.querySelector('code').textContent;
-                try {
-                    await navigator.clipboard.writeText(code);
-                    copyButton.textContent = 'Copied!';
-                    copyButton.classList.add('copied');
-                    setTimeout(() => {
-                        copyButton.textContent = 'Copy';
-                        copyButton.classList.remove('copied');
-                    }, 2000);
-                } catch (err) {
-                    console.error('Failed to copy text: ', err);
-                }
+            copyButton.addEventListener('click', function() {
+                copyCode(this);
             });
             highlightDiv.style.position = 'relative';
             highlightDiv.appendChild(copyButton);
