@@ -213,6 +213,8 @@ function toggleLineNumbers(button) {
                         lineNum.style.display = 'block';
                         lineNum.style.height = '1.6em';
                         lineNum.style.lineHeight = '1.6';
+                        lineNum.style.color = 'var(--line-number-color)';
+                        lineNum.style.userSelect = 'none';
                         lineNumberDiv.appendChild(lineNum);
                     }
                 });
