@@ -145,15 +145,17 @@ function filterMenuByLanguage() {
 }
 
 function updateSearchForm() {
-    const searchForm = document.getElementById('rtd-search-form');
-    if (searchForm) {
+    const searchForms = document.querySelectorAll('#rtd-search-form');
+    searchForms.forEach(searchForm => {
         const currentPath = window.location.pathname;
         
-        if (currentPath.endsWith('/search.html')) {
-            searchForm.action = 'search.html';
+        if (currentPath.includes('/en/') || currentPath.includes('/zh_CN/')) {
+            searchForm.action = '../../search.html';
         } else {
             searchForm.action = 'search.html';
         }
+    });
+}
     }
 }
 
