@@ -21,15 +21,3 @@
         </button>
     </div>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const currentPath = window.location.pathname;
-    const isZh = currentPath.includes('/zh_CN/');
-    
-    const langIcon = document.getElementById('lang-icon');
-    if (langIcon) {
-        langIcon.innerHTML = isZh ? '🇨🇳' : '🇺🇸';
-    }
-});
-</script>
