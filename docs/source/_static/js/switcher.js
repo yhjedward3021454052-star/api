@@ -130,6 +130,20 @@ function filterMenuByLanguage() {
     });
 }
 
+function updateSearchForm() {
+    const currentPath = window.location.pathname;
+    const isZh = currentPath.includes('/zh_CN/');
+    
+    const searchForm = document.getElementById('rtd-search-form');
+    if (searchForm) {
+        if (isZh) {
+            searchForm.action = '../zh_CN/search.html';
+        } else {
+            searchForm.action = '../en/search.html';
+        }
+    }
+}
+
 document.addEventListener('click', function(event) {
     const dropdown = document.querySelector('.language-dropdown');
     const icon = document.querySelector('.switcher-icon');
@@ -153,4 +167,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     filterMenuByLanguage();
+    updateSearchForm();
 });
