@@ -16,6 +16,7 @@ function setTheme(theme) {
             el.style.color = '#b0b0b0';
         });
         localStorage.setItem('theme', 'dark');
+        document.getElementById('theme-icon').innerHTML = '🌙';
     } else {
         sidebar.style.background = '';
         content.style.background = '';
@@ -25,7 +26,13 @@ function setTheme(theme) {
             el.style.color = '';
         });
         localStorage.setItem('theme', 'light');
+        document.getElementById('theme-icon').innerHTML = '☀️';
     }
+}
+
+function toggleTheme() {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    setTheme(currentTheme === 'light' ? 'dark' : 'light');
 }
 
 window.addEventListener('DOMContentLoaded', function() {

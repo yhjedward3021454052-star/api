@@ -33,25 +33,98 @@
           
           <a href="../index.html" class="icon icon-home">
             Multilingual Documentation Site
-          </a><div style="padding: 15px; margin-bottom: 20px; background: #f8f9fa; border-radius: 5px; border-left: 3px solid #e74c3c;">
-    <div style="margin-bottom: 15px;">
-        <strong style="display: block; margin-bottom: 8px; font-size: 14px; color: #2c3e50;">Language / 语言</strong>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-            <a href="../en/index.html" style="display: block; padding: 8px 12px; background: white; border: 1px solid #e1e4e8; border-radius: 4px; color: #0366d6; text-decoration: none; transition: all 0.2s ease;">English</a>
-            <a href="../zh_CN/index.html" style="display: block; padding: 8px 12px; background: white; border: 1px solid #e1e4e8; border-radius: 4px; color: #0366d6; text-decoration: none; transition: all 0.2s ease;">中文</a>
+          </a><style>
+#switcher-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    margin-top: 20px;
+    border-top: 1px solid #e1e4e8;
+}
+
+.switcher-item {
+    position: relative;
+}
+
+.switcher-icon {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.switcher-icon:hover {
+    background: rgba(0, 122, 255, 0.1);
+}
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-width: 120px;
+    z-index: 1000;
+    margin-bottom: 5px;
+}
+
+.switcher-item:hover .language-dropdown {
+    display: block;
+}
+
+.language-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: #2c3e50;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    font-size: 14px;
+}
+
+.language-dropdown a:hover {
+    background: rgba(0, 122, 255, 0.1);
+    color: #007aff;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    font-size: 20px;
+}
+
+#theme-toggle:hover {
+    background: rgba(0, 122, 255, 0.1);
+}
+</style>
+
+<div id="switcher-container">
+    <div class="switcher-item">
+        <div class="switcher-icon" title="Language">
+            🌐
+            <div class="language-dropdown">
+                <a href="../en/index.html">English</a>
+                <a href="../zh_CN/index.html">中文</a>
+            </div>
         </div>
     </div>
     
-    <div>
-        <strong style="display: block; margin-bottom: 8px; font-size: 14px; color: #2c3e50;">Theme / 主题</strong>
-        <div style="display: flex; gap: 10px;">
-            <button onclick="setTheme('light')" style="flex: 1; padding: 8px 12px; border: 1px solid #e1e4e8; border-radius: 4px; background: white; color: #2c3e50; cursor: pointer; transition: all 0.2s ease; font-size: 13px;">
-                ☀️ Light
-            </button>
-            <button onclick="setTheme('dark')" style="flex: 1; padding: 8px 12px; border: 1px solid #e1e4e8; border-radius: 4px; background: white; color: #2c3e50; cursor: pointer; transition: all 0.2s ease; font-size: 13px;">
-                🌙 Dark
-            </button>
-        </div>
+    <div class="switcher-item">
+        <button id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+            <span id="theme-icon">☀️</span>
+        </button>
     </div>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
@@ -126,6 +199,7 @@ function setTheme(theme) {
             el.style.color = '#b0b0b0';
         });
         localStorage.setItem('theme', 'dark');
+        document.getElementById('theme-icon').innerHTML = '🌙';
     } else {
         sidebar.style.background = '';
         content.style.background = '';
@@ -135,7 +209,13 @@ function setTheme(theme) {
             el.style.color = '';
         });
         localStorage.setItem('theme', 'light');
+        document.getElementById('theme-icon').innerHTML = '☀️';
     }
+}
+
+function toggleTheme() {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    setTheme(currentTheme === 'light' ? 'dark' : 'light');
 }
 
 window.addEventListener('DOMContentLoaded', function() {
