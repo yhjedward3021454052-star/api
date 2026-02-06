@@ -28,60 +28,53 @@ class ThemeManager {
     
     init() {
         if (this.currentTheme === 'dark') {
-            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
             this.applyDarkTheme();
+        } else {
+            document.body.classList.add('light-theme');
+            this.applyLightTheme();
         }
         this.updateIcons();
     }
     
     applyDarkTheme() {
-        document.body.classList.add('dark-theme');
-        document.body.style.background = this.currentTheme === 'dark' ? '#1e1e1e' : '#ffffff';
-        document.body.style.color = this.currentTheme === 'dark' ? '#e0e0e0' : '#2c3e50';
-        
-        this.updateElementStyle('.wy-nav-side', {
-            background: this.currentTheme === 'dark' ? '#2d2d2d' : '#ffffff'
-        });
-        
-        this.updateElementStyle('.wy-nav-content-wrap', {
-            background: this.currentTheme === 'dark' ? '#2d2d2d' : '#ffffff'
-        });
-        
-        this.updateElementStyle('.wy-nav-content', {
-            background: this.currentTheme === 'dark' ? '#1e1e1e' : '#ffffff',
-            color: this.currentTheme === 'dark' ? '#e0e0e0' : '#2c3e50'
-        });
-        
-        this.updateElementStyle('.wy-side-nav-search', {
-            background: this.currentTheme === 'dark' ? '#1e1e1e' : '#ffffff'
-        });
-        
+        document.body.classList.remove('light-theme');
+        document.body.style.background = '#1e1e1e';
+        document.body.style.color = '#e0e0e0';
+
+        this.updateElementStyle('.wy-nav-side', { background: '#2d2d2d' });
+        this.updateElementStyle('.wy-nav-content-wrap', { background: '#2d2d2d' });
+        this.updateElementStyle('.wy-nav-content', { background: '#1e1e1e', color: '#e0e0e0' });
+        this.updateElementStyle('.wy-side-nav-search', { background: '#1e1e1e' });
+
         document.querySelectorAll('.wy-menu-vertical a').forEach(el => {
-            el.style.color = this.currentTheme === 'dark' ? '#b0b0b0' : '';
+            el.style.color = '#b0b0b0';
         });
-        
+
         document.querySelectorAll('.rst-content .admonition').forEach(el => {
-            el.style.background = this.currentTheme === 'dark' ? '#2a2a2a' : '';
-            el.style.borderColor = this.currentTheme === 'dark' ? '#444444' : '';
+            el.style.background = '#2a2a2a';
+            el.style.borderColor = '#444444';
         });
-        
+
         document.querySelectorAll('.rst-content table').forEach(el => {
-            el.style.background = this.currentTheme === 'dark' ? '#2a2a2a' : '';
+            el.style.background = '#2a2a2a';
         });
-        
+
         document.querySelectorAll('.rst-content code, .rst-content pre').forEach(el => {
-            el.style.background = this.currentTheme === 'dark' ? '#2a2a2a' : '';
-            el.style.color = this.currentTheme === 'dark' ? '#e0e0e0' : '';
+            el.style.background = '#2a2a2a';
+            el.style.color = '#e0e0e0';
         });
-        
+
         document.querySelectorAll('.rst-content blockquote').forEach(el => {
-            el.style.background = this.currentTheme === 'dark' ? '#2a2a2a' : '';
-            el.style.borderLeftColor = this.currentTheme === 'dark' ? '#666666' : '';
+            el.style.background = '#2a2a2a';
+            el.style.borderLeftColor = '#666666';
         });
     }
     
     applyLightTheme() {
-        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+        document.body.style.background = '#ffffff';
+        document.body.style.color = '#2c3e50';
         this.updateElementStyle('.wy-nav-side', { background: '#ffffff' });
         this.updateElementStyle('.wy-nav-content-wrap', { background: '#ffffff' });
         this.updateElementStyle('.wy-nav-content', { background: '#ffffff', color: '#2c3e50' });
@@ -114,13 +107,17 @@ class ThemeManager {
     setTheme(theme) {
         this.currentTheme = theme;
         localStorage.setItem('theme', theme);
-        
+
         if (theme === 'dark') {
+            document.body.classList.remove('light-theme');
             this.applyDarkTheme();
-            document.getElementById('theme-icon').innerHTML = '🌙';
+            const icon = document.getElementById('theme-icon');
+            if (icon) icon.innerHTML = '🌙';
         } else {
+            document.body.classList.add('light-theme');
             this.applyLightTheme();
-            document.getElementById('theme-icon').innerHTML = '☀️';
+            const icon = document.getElementById('theme-icon');
+            if (icon) icon.innerHTML = '☀️';
         }
     }
     
@@ -144,9 +141,6 @@ class ThemeManager {
         }
     }
 }
-
-// Initialize theme manager
-const themeManager = new ThemeManager();
 
 // Language Menu
 class LanguageManager {
@@ -209,23 +203,33 @@ class LanguageManager {
     setLanguage(lang) {
         this.currentLanguage = lang;
         localStorage.setItem('language', lang);
-        
-        // Get the current page name
+
+        // Get the current page path
         const currentPath = window.location.pathname;
-        const pathParts = currentPath.split('/');
-        const currentPage = pathParts[pathParts.length - 1] || 'index.html';
-        
-        // Build the new URL
-        if (lang === 'zh_CN') {
-            window.location.href = '../zh_CN/' + currentPage;
-        } else {
-            window.location.href = '../en/' + currentPage;
+
+        // Detect current language from path
+        let currentLang = '';
+        if (currentPath.includes('/en/')) {
+            currentLang = 'en';
+        } else if (currentPath.includes('/zh_CN/')) {
+            currentLang = 'zh_CN';
         }
+
+        // If we're not on a language page, go to the language index
+        if (!currentLang) {
+            if (lang === 'zh_CN') {
+                window.location.href = 'zh_CN/index.html';
+            } else {
+                window.location.href = 'en/index.html';
+            }
+            return;
+        }
+
+        // Build the new URL by replacing the language in the path
+        const newPath = currentPath.replace('/' + currentLang + '/', '/' + lang + '/');
+        window.location.href = newPath;
     }
 }
-
-// Initialize language manager
-const languageManager = new LanguageManager();
 
 // Search Manager
 class SearchManager {
@@ -241,18 +245,32 @@ class SearchManager {
         const searchForms = document.querySelectorAll('#rtd-search-form');
         searchForms.forEach(form => {
             const currentPath = window.location.pathname;
-            
+
+            // Check if we're inside a language folder
             if (currentPath.includes('/en/') || currentPath.includes('/zh_CN/')) {
-                form.action = '../../search.html';
+                // Find the position after the language folder
+                const langMatch = currentPath.match(/\/(en|zh_CN)\//);
+                if (langMatch) {
+                    const langIndex = langMatch.index + langMatch[0].length;
+                    const remainingPath = currentPath.substring(langIndex);
+
+                    // Count how many directories are after the language folder
+                    const depth = remainingPath ? (remainingPath.match(/\//g) || []).length : 0;
+
+                    // Build the relative path: go up (depth + 1) levels to reach docs root
+                    let relativePath = '';
+                    for (let i = 0; i <= depth; i++) {
+                        relativePath += '../';
+                    }
+                    form.action = relativePath + 'search.html';
+                }
             } else {
+                // Not in a language folder, search is at current level
                 form.action = 'search.html';
             }
         });
     }
 }
-
-// Initialize search manager
-const searchManager = new SearchManager();
 
 // Code Manager
 class CodeManager {
@@ -402,17 +420,15 @@ class CodeManager {
     }
 }
 
-// Initialize code manager
-const codeManager = new CodeManager();
-
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Switcher script loaded successfully');
-    
-    themeManager.init();
-    languageManager.init();
-    searchManager.init();
-    codeManager.init();
+
+    // Initialize all managers
+    window.themeManager = new ThemeManager();
+    window.languageManager = new LanguageManager();
+    window.searchManager = new SearchManager();
+    window.codeManager = new CodeManager();
 });
 
 document.addEventListener('click', (event) => {
@@ -427,13 +443,17 @@ document.addEventListener('click', (event) => {
 
 // Global functions for HTML onclick attributes
 function toggleTheme() {
-    themeManager.toggleTheme();
+    if (window.themeManager) {
+        window.themeManager.toggleTheme();
+    } else {
+        console.error('Theme manager not initialized');
+    }
 }
 
 function toggleLanguageDropdown() {
     const dropdown = document.querySelector('.language-dropdown');
     const icon = document.querySelector('.switcher-icon');
-    
+
     if (dropdown && dropdown.classList.contains('show')) {
         dropdown.classList.remove('show');
         if (icon) {
@@ -450,5 +470,9 @@ function toggleLanguageDropdown() {
 }
 
 function switchLanguage(lang) {
-    languageManager.setLanguage(lang);
+    if (window.languageManager) {
+        window.languageManager.setLanguage(lang);
+    } else {
+        console.error('Language manager not initialized');
+    }
 }
