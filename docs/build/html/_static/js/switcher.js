@@ -131,9 +131,6 @@ function filterMenuByLanguage() {
 }
 
 function updateSearchForm() {
-    const currentPath = window.location.pathname;
-    const isZh = currentPath.includes('/zh_CN/');
-    
     const searchForm = document.getElementById('rtd-search-form');
     if (searchForm) {
         searchForm.action = '../../search.html';
@@ -143,33 +140,33 @@ function updateSearchForm() {
 function copyCode(button) {
     const highlightDiv = button.closest('.highlight');
     const codeElement = highlightDiv.querySelector('code');
-    const textToCopy = codeElement.textContent || codeElement.innerText;
+    const textToCopy = codeElement ? codeElement.textContent : '';
     
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        const originalText = button.textContent;
-        button.textContent = 'Copied!';
-        button.classList.add('copied');
-        
-        setTimeout(function() {
-            button.textContent = originalText;
-            button.classList.remove('copied');
-        }, 2000);
-    }).catch(function(err) {
-        console.error('Copy failed:', err);
-        const textarea = document.createElement('textarea');
-        textarea.value = textToCopy;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
+    const textarea = document.createElement('textarea');
+    textarea.value = textToCopy;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    
+    try {
+        const successful = document.execCommand('copy');
         document.body.removeChild(textarea);
         
-        button.textContent = 'Copied!';
-        button.classList.add('copied');
-        setTimeout(function() {
-            button.textContent = 'Copy';
-            button.classList.remove('copied');
-        }, 2000);
-    });
+        if (successful) {
+            button.textContent = 'Copied!';
+            button.classList.add('copied');
+            
+            setTimeout(function() {
+                button.textContent = 'Copy';
+                button.classList.remove('copied');
+            }, 2000);
+        }
+    } catch (err) {
+        document.body.removeChild(textarea);
+        console.error('Copy failed:', err);
+        alert('复制失败，请手动复制');
+    }
 }
 
 function addCopyButtons() {
