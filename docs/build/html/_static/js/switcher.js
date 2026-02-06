@@ -39,6 +39,11 @@ function setTheme(theme) {
             el.style.borderLeftColor = '#666';
         });
         
+        document.querySelectorAll('div.highlight.with-lines pre::before').forEach(el => {
+            el.style.background = '#2a2a2a';
+            el.style.borderColor = '#444';
+        });
+        
         localStorage.setItem('theme', 'dark');
         document.getElementById('theme-icon').innerHTML = '🌙';
     } else {
@@ -73,6 +78,11 @@ function setTheme(theme) {
         document.querySelectorAll('.rst-content blockquote').forEach(el => {
             el.style.background = '';
             el.style.borderLeftColor = '';
+        });
+        
+        document.querySelectorAll('div.highlight.with-lines pre::before').forEach(el => {
+            el.style.background = '';
+            el.style.borderColor = '';
         });
         
         localStorage.setItem('theme', 'light');
@@ -139,8 +149,8 @@ function updateSearchForm() {
 
 function copyCode(button) {
     const highlightDiv = button.closest('.highlight');
-    const codeElement = highlightDiv.querySelector('code');
-    const textToCopy = codeElement ? codeElement.textContent : '';
+    const preElement = highlightDiv.querySelector('pre');
+    const textToCopy = preElement ? preElement.textContent : '';
     
     const textarea = document.createElement('textarea');
     textarea.value = textToCopy;
@@ -172,11 +182,11 @@ function copyCode(button) {
 function toggleLineNumbers(button) {
     const highlightDiv = button.closest('.highlight');
     
-    if (highlightDiv.classList.contains('linenos')) {
-        highlightDiv.classList.remove('linenos');
+    if (highlightDiv.classList.contains('with-lines')) {
+        highlightDiv.classList.remove('with-lines');
         button.classList.remove('active');
     } else {
-        highlightDiv.classList.add('linenos');
+        highlightDiv.classList.add('with-lines');
         button.classList.add('active');
     }
 }
@@ -206,6 +216,23 @@ function addCopyButtons() {
             
             highlightDiv.style.position = 'relative';
             highlightDiv.appendChild(buttonContainer);
+            
+            const preElement = highlightDiv.querySelector('pre');
+            if (preElement) {
+                const spans = preElement.querySelectorAll('span');
+                spans.forEach(span => {
+                    const text = span.textContent;
+                    if (text && !text.trim().match(/^\n+$/)) {
+                        if (span.parentNode === preElement) {
+                            const wrapper = document.createElement('span');
+                            wrapper.className = 'code-line';
+                            wrapper.appendChild(span.cloneNode(true));
+                            preElement.insertBefore(wrapper, span);
+                            preElement.removeChild(span);
+                        }
+                    }
+                });
+            }
         }
     });
 }

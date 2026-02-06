@@ -103,9 +103,7 @@ div.highlight pre {
     overflow-x: auto;
 }
 
-div.highlight code {
-    background: transparent;
-    font-size: 14px;
+div.highlight span {
     line-height: 1.6;
 }
 
@@ -144,17 +142,42 @@ div.highlight code {
     color: white;
 }
 
-div.highlight.linenos pre {
+div.highlight.with-lines .highlight-buttons {
+    top: 8px;
+    right: 60px;
+}
+
+div.highlight.with-lines pre {
+    position: relative;
+    padding-left: 40px;
+}
+
+div.highlight.with-lines pre::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 35px;
+    background: #f0f0f0;
+    border-right: 1px solid #e1e4e8;
     counter-reset: line;
 }
 
-div.highlight.linenos code::before {
+div.highlight.with-lines span {
+    display: block;
     counter-increment: line;
+    position: relative;
+}
+
+div.highlight.with-lines span::before {
     content: counter(line);
-    display: inline-block;
-    width: 2em;
-    margin-right: 1em;
+    position: absolute;
+    left: -35px;
+    width: 30px;
     text-align: right;
     color: #999;
+    font-size: 12px;
     user-select: none;
+    line-height: 1.6;
 }
