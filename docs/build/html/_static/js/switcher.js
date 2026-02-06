@@ -7,37 +7,37 @@ function setTheme(theme) {
     
     if (theme === 'dark') {
         document.body.classList.add('dark-theme');
-        sidebar.style.background = '#2d2d2d';
-        contentWrap.style.background = '#2d2d2d';
-        content.style.background = '#1e1e1e';
-        content.style.color = '#e0e0e0';
-        searchBox.style.background = '#1e1e1e';
+        sidebar.style.background = 'var(--sidebar-bg)';
+        contentWrap.style.background = 'var(--sidebar-bg)';
+        content.style.background = 'var(--content-bg)';
+        content.style.color = 'var(--content-text)';
+        searchBox.style.background = 'var(--search-box-bg)';
         
         if (documentBody) {
-            documentBody.style.background = '#1e1e1e';
+            documentBody.style.background = 'var(--content-bg)';
         }
         
         document.querySelectorAll('.wy-menu-vertical a').forEach(el => {
-            el.style.color = '#b0b0b0';
+            el.style.color = 'var(--sidebar-text)';
         });
         
         document.querySelectorAll('.rst-content .admonition, .rst-content .note, .rst-content .warning').forEach(el => {
-            el.style.background = '#2a2a2a';
-            el.style.borderColor = '#444';
+            el.style.background = 'var(--admonition-bg)';
+            el.style.borderColor = 'var(--admonition-border)';
         });
         
         document.querySelectorAll('.rst-content table').forEach(el => {
-            el.style.background = '#2a2a2a';
+            el.style.background = 'var(--table-bg)';
         });
         
         document.querySelectorAll('.rst-content code, .rst-content pre').forEach(el => {
-            el.style.background = '#2a2a2a';
-            el.style.color = '#e0e0e0';
+            el.style.background = 'var(--code-bg)';
+            el.style.color = 'var(--code-text)';
         });
         
         document.querySelectorAll('.rst-content blockquote').forEach(el => {
-            el.style.background = '#2a2a2a';
-            el.style.borderLeftColor = '#666';
+            el.style.background = 'var(--blockquote-bg)';
+            el.style.borderLeftColor = 'var(--blockquote-border)';
         });
         
         localStorage.setItem('theme', 'dark');
