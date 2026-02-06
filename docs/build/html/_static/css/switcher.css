@@ -86,3 +86,23 @@
     border-color: #007aff;
     background: rgba(0, 122, 255, 0.05);
 }
+
+div.highlight {
+    background: #f8f9fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    padding: 12px;
+    margin: 12px 0;
+}
+
+div.highlight pre {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+div.highlight code {
+    background: transparent;
+    font-size: 14px;
+    line-height: 1.6;
+}

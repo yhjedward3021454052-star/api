@@ -36,6 +36,9 @@ html_theme_options = {
     'navigation_depth': 4,
 }
 
+pygments_style = 'friendly'
+highlight_language = 'python'
+
 html_context = {
     'current_language': 'zh_CN',
     'languages': [
