@@ -39,9 +39,8 @@ function setTheme(theme) {
             el.style.borderLeftColor = '#666';
         });
         
-        document.querySelectorAll('div.highlight.with-lines pre::before').forEach(el => {
-            el.style.background = '#2a2a2a';
-            el.style.borderColor = '#444';
+        document.querySelectorAll('div.highlight.with-lines span::before').forEach(el => {
+            el.style.color = '#666';
         });
         
         localStorage.setItem('theme', 'dark');
@@ -80,9 +79,8 @@ function setTheme(theme) {
             el.style.borderLeftColor = '';
         });
         
-        document.querySelectorAll('div.highlight.with-lines pre::before').forEach(el => {
-            el.style.background = '';
-            el.style.borderColor = '';
+        document.querySelectorAll('div.highlight.with-lines span::before').forEach(el => {
+            el.style.color = '';
         });
         
         localStorage.setItem('theme', 'light');
@@ -216,23 +214,6 @@ function addCopyButtons() {
             
             highlightDiv.style.position = 'relative';
             highlightDiv.appendChild(buttonContainer);
-            
-            const preElement = highlightDiv.querySelector('pre');
-            if (preElement) {
-                const spans = preElement.querySelectorAll('span');
-                spans.forEach(span => {
-                    const text = span.textContent;
-                    if (text && !text.trim().match(/^\n+$/)) {
-                        if (span.parentNode === preElement) {
-                            const wrapper = document.createElement('span');
-                            wrapper.className = 'code-line';
-                            wrapper.appendChild(span.cloneNode(true));
-                            preElement.insertBefore(wrapper, span);
-                            preElement.removeChild(span);
-                        }
-                    }
-                });
-            }
         }
     });
 }

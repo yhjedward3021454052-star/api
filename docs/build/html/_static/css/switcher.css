@@ -94,6 +94,7 @@ div.highlight {
     padding: 12px;
     margin: 12px 0;
     position: relative;
+    counter-reset: highlight-line;
 }
 
 div.highlight pre {
@@ -107,6 +108,28 @@ div.highlight span {
     line-height: 1.6;
 }
 
+div.highlight.with-lines {
+    padding-left: 50px;
+}
+
+div.highlight.with-lines span {
+    position: relative;
+    display: block;
+}
+
+div.highlight.with-lines span::before {
+    counter-increment: highlight-line;
+    content: counter(highlight-line);
+    position: absolute;
+    left: -50px;
+    width: 40px;
+    text-align: right;
+    color: #999;
+    font-size: 12px;
+    user-select: none;
+    line-height: 1.6;
+}
+
 .highlight-buttons {
     position: absolute;
     top: 8px;
@@ -114,6 +137,10 @@ div.highlight span {
     display: flex;
     gap: 5px;
     z-index: 10;
+}
+
+div.highlight.with-lines .highlight-buttons {
+    right: 8px;
 }
 
 .copy-button,
@@ -140,44 +167,4 @@ div.highlight span {
     background: #28a745;
     border-color: #28a745;
     color: white;
-}
-
-div.highlight.with-lines .highlight-buttons {
-    top: 8px;
-    right: 60px;
-}
-
-div.highlight.with-lines pre {
-    position: relative;
-    padding-left: 40px;
-}
-
-div.highlight.with-lines pre::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 35px;
-    background: #f0f0f0;
-    border-right: 1px solid #e1e4e8;
-    counter-reset: line;
-}
-
-div.highlight.with-lines span {
-    display: block;
-    counter-increment: line;
-    position: relative;
-}
-
-div.highlight.with-lines span::before {
-    content: counter(line);
-    position: absolute;
-    left: -35px;
-    width: 30px;
-    text-align: right;
-    color: #999;
-    font-size: 12px;
-    user-select: none;
-    line-height: 1.6;
 }
