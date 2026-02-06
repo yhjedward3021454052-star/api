@@ -169,17 +169,43 @@ function copyCode(button) {
     }
 }
 
+function toggleLineNumbers(button) {
+    const highlightDiv = button.closest('.highlight');
+    
+    if (highlightDiv.classList.contains('linenos')) {
+        highlightDiv.classList.remove('linenos');
+        button.classList.remove('active');
+    } else {
+        highlightDiv.classList.add('linenos');
+        button.classList.add('active');
+    }
+}
+
 function addCopyButtons() {
     document.querySelectorAll('div.highlight').forEach(highlightDiv => {
-        if (!highlightDiv.querySelector('.copy-button')) {
+        if (!highlightDiv.querySelector('.highlight-buttons')) {
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'highlight-buttons';
+            
             const copyButton = document.createElement('button');
             copyButton.className = 'copy-button';
             copyButton.textContent = 'Copy';
             copyButton.addEventListener('click', function() {
                 copyCode(this);
             });
+            
+            const lineButton = document.createElement('button');
+            lineButton.className = 'line-button';
+            lineButton.textContent = 'Line';
+            lineButton.addEventListener('click', function() {
+                toggleLineNumbers(this);
+            });
+            
+            buttonContainer.appendChild(copyButton);
+            buttonContainer.appendChild(lineButton);
+            
             highlightDiv.style.position = 'relative';
-            highlightDiv.appendChild(copyButton);
+            highlightDiv.appendChild(buttonContainer);
         }
     });
 }

@@ -100,6 +100,7 @@ div.highlight pre {
     background: transparent;
     border: none;
     padding: 0;
+    overflow-x: auto;
 }
 
 div.highlight code {
@@ -108,10 +109,17 @@ div.highlight code {
     line-height: 1.6;
 }
 
-.copy-button {
+.highlight-buttons {
     position: absolute;
     top: 8px;
     right: 8px;
+    display: flex;
+    gap: 5px;
+    z-index: 10;
+}
+
+.copy-button,
+.line-button {
     background: white;
     border: 1px solid #e1e4e8;
     border-radius: 4px;
@@ -122,14 +130,31 @@ div.highlight code {
     z-index: 10;
 }
 
-.copy-button:hover {
+.copy-button:hover,
+.line-button:hover {
     background: #007aff;
     border-color: #007aff;
     color: white;
 }
 
-.copy-button.copied {
+.copy-button.copied,
+.line-button.active {
     background: #28a745;
     border-color: #28a745;
     color: white;
+}
+
+div.highlight.linenos pre {
+    counter-reset: line;
+}
+
+div.highlight.linenos code::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 2em;
+    margin-right: 1em;
+    text-align: right;
+    color: #999;
+    user-select: none;
 }
