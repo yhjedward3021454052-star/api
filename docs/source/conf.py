@@ -49,7 +49,6 @@ html_context = {
 
 html_sidebars = {
     '**': [
-        'language_switcher.html',
         'relations.html',
         'searchbox.html',
     ],
@@ -57,4 +56,3 @@ html_sidebars = {
 
 def setup(app):
     app.add_css_file('custom.css', priority=500)
-    app.add_js_file('language-switcher.js', priority=500)

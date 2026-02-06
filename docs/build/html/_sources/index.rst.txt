@@ -3,9 +3,6 @@ Welcome to Multilingual Documentation
 
 This is a multilingual documentation site built with Sphinx and Markdown.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-   
-   en/index
-   zh_CN/index
+Select your language:
+- :doc:`English <en/index>`
+- :doc:`中文 <zh_CN/index>`
