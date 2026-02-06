@@ -1,26 +1,82 @@
 function setTheme(theme) {
     const sidebar = document.querySelector('.wy-nav-side');
+    const contentWrap = document.querySelector('.wy-nav-content-wrap');
     const content = document.querySelector('.wy-nav-content');
     const searchBox = document.querySelector('.wy-side-nav-search');
+    const documentBody = document.querySelector('[role="main"]');
     
     if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
         sidebar.style.background = '#2d2d2d';
+        contentWrap.style.background = '#2d2d2d';
         content.style.background = '#1e1e1e';
         content.style.color = '#e0e0e0';
         searchBox.style.background = '#1e1e1e';
+        
+        if (documentBody) {
+            documentBody.style.background = '#1e1e1e';
+        }
+        
         document.querySelectorAll('.wy-menu-vertical a').forEach(el => {
             el.style.color = '#b0b0b0';
         });
+        
+        document.querySelectorAll('.rst-content .admonition, .rst-content .note, .rst-content .warning').forEach(el => {
+            el.style.background = '#2a2a2a';
+            el.style.borderColor = '#444';
+        });
+        
+        document.querySelectorAll('.rst-content table').forEach(el => {
+            el.style.background = '#2a2a2a';
+        });
+        
+        document.querySelectorAll('.rst-content code, .rst-content pre').forEach(el => {
+            el.style.background = '#2a2a2a';
+            el.style.color = '#e0e0e0';
+        });
+        
+        document.querySelectorAll('.rst-content blockquote').forEach(el => {
+            el.style.background = '#2a2a2a';
+            el.style.borderLeftColor = '#666';
+        });
+        
         localStorage.setItem('theme', 'dark');
         document.getElementById('theme-icon').innerHTML = '🌙';
     } else {
+        document.body.classList.remove('dark-theme');
         sidebar.style.background = '';
+        contentWrap.style.background = '';
         content.style.background = '';
         content.style.color = '';
         searchBox.style.background = '';
+        
+        if (documentBody) {
+            documentBody.style.background = '';
+        }
+        
         document.querySelectorAll('.wy-menu-vertical a').forEach(el => {
             el.style.color = '';
         });
+        
+        document.querySelectorAll('.rst-content .admonition, .rst-content .note, .rst-content .warning').forEach(el => {
+            el.style.background = '';
+            el.style.borderColor = '';
+        });
+        
+        document.querySelectorAll('.rst-content table').forEach(el => {
+            el.style.background = '';
+        });
+        
+        document.querySelectorAll('.rst-content code, .rst-content pre').forEach(el => {
+            el.style.background = '';
+            el.style.color = '';
+        });
+        
+        document.querySelectorAll('.rst-content blockquote').forEach(el => {
+            el.style.background = '';
+            el.style.borderLeftColor = '';
+        });
+        
         localStorage.setItem('theme', 'light');
         document.getElementById('theme-icon').innerHTML = '☀️';
     }
