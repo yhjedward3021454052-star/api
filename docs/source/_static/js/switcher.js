@@ -4,13 +4,20 @@ function setTheme(theme) {
     const content = document.querySelector('.wy-nav-content');
     const searchBox = document.querySelector('.wy-side-nav-search');
     const documentBody = document.querySelector('[role="main"]');
+    const wyGrid = document.querySelector('.wy-grid-for-nav');
     
     if (theme === 'dark') {
         document.body.classList.add('dark-theme');
+        if (wyGrid) {
+            wyGrid.style.background = '#1e1e1e';
+        }
         sidebar.style.background = '#2d2d2d';
-        contentWrap.style.background = '#2d2d2d';
+        contentWrap.style.background = '#1e1e1e';
         content.style.background = '#1e1e1e';
         content.style.color = '#e0e0e0';
+        content.style.width = 'calc(100% - 300px)';
+        content.style.maxWidth = '100%';
+        content.style.marginLeft = '300px';
         searchBox.style.background = '#1e1e1e';
         
         if (documentBody) {
@@ -44,10 +51,16 @@ function setTheme(theme) {
         document.getElementById('theme-icon').innerHTML = '🌙';
     } else {
         document.body.classList.remove('dark-theme');
+        if (wyGrid) {
+            wyGrid.style.background = '';
+        }
         sidebar.style.background = '';
         contentWrap.style.background = '';
         content.style.background = '';
         content.style.color = '';
+        content.style.width = '';
+        content.style.maxWidth = '';
+        content.style.marginLeft = '';
         searchBox.style.background = '';
         
         if (documentBody) {
