@@ -265,6 +265,7 @@ document.addEventListener('click', function(event) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Switcher script loaded');
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
     
@@ -278,5 +279,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     filterMenuByLanguage();
     updateSearchForm();
-    addCopyButtons();
+    
+    setTimeout(function() {
+        console.log('Adding copy buttons...');
+        addCopyButtons();
+    }, 100);
 });
