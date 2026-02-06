@@ -137,9 +137,9 @@ function updateSearchForm() {
     const searchForm = document.getElementById('rtd-search-form');
     if (searchForm) {
         if (isZh) {
-            searchForm.action = '../zh_CN/search.html';
+            searchForm.action = '../../search.html';
         } else {
-            searchForm.action = '../en/search.html';
+            searchForm.action = '../../search.html';
         }
     }
 }
