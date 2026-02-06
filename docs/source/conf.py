@@ -21,7 +21,7 @@ extensions = [
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-language = 'en'
+language = 'zh_CN'
 
 source_suffix = {
     '.rst': 'restructuredtext',
@@ -37,7 +37,7 @@ html_theme_options = {
 }
 
 html_context = {
-    'current_language': 'en',
+    'current_language': 'zh_CN',
     'languages': [
         ('en', 'English'),
         ('zh_CN', '中文'),

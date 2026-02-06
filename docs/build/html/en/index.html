@@ -1,24 +1,25 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../">
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Multilingual Documentation Site &mdash; Multilingual Documentation Site 1.0 documentation</title>
+  <title>Welcome to Multilingual Documentation Site &mdash; Multilingual Documentation Site 1.0 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
     <script src="../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="User Guide" href="guide.html" />
     <link rel="prev" title="Welcome to Multilingual Documentation" href="../index.html" /> 
 </head>
@@ -33,51 +34,19 @@
           
           <a href="../index.html" class="icon icon-home">
             Multilingual Documentation Site
-          </a><script>
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-        const menu = document.querySelector('.wy-menu-vertical');
-        const switcherContainer = document.getElementById('switcher-container');
-        
-        if (menu && switcherContainer) {
-            const currentPath = window.location.pathname;
-            const isZh = currentPath.includes('/zh_CN/');
-            
-            switcherContainer.style.display = 'flex';
-            menu.appendChild(switcherContainer);
-            
-            const langIcon = document.getElementById('lang-icon');
-            if (langIcon) {
-                langIcon.innerHTML = isZh ? '🇨🇳' : '🇺🇸';
-            }
-            
-            const menuItems = menu.querySelectorAll('p.caption');
-            menuItems.forEach(item => {
-                const text = item.textContent;
-                const parentList = item.parentElement;
-                
-                if (isZh) {
-                    if (text.includes('English')) {
-                        parentList.style.display = 'none';
-                    }
-                } else {
-                    if (text.includes('中文')) {
-                        parentList.style.display = 'none';
-                    }
-                }
-            });
-        }
-    }, 100);
-});
-</script>
+          </a><form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+</form>
 
-<div id="switcher-container" style="display: none;">
+<div id="switcher-container">
     <div class="switcher-item">
         <div class="switcher-icon" title="Language">
             <span id="lang-icon">🇨🇳</span>
             <div class="language-dropdown">
-                <a href="../en/index.html" onclick="switchLanguage('en')">🇺🇸 English</a>
-                <a href="../zh_CN/index.html" onclick="switchLanguage('zh')">🇨🇳 中文</a>
+                <a href="../en/index.html">🇺🇸 English</a>
+                <a href="../zh_CN/index.html">🇨🇳 中文</a>
             </div>
         </div>
     </div>
@@ -88,7 +57,19 @@ document.addEventListener('DOMContentLoaded', function() {
         </button>
     </div>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname;
+    const isZh = currentPath.includes('/zh_CN/');
+    
+    const langIcon = document.getElementById('lang-icon');
+    if (langIcon) {
+        langIcon.innerHTML = isZh ? '🇨🇳' : '🇺🇸';
+    }
+});
+</script>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <p class="caption" role="heading"><span class="caption-text">English Documentation:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to Multilingual Documentation Site</a><ul>
@@ -116,23 +97,23 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Multilingual Documentation Site</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+          <div role="navigation" aria-label="页面导航">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Welcome to Multilingual Documentation Site</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/yhjedward3021454052-star/api/blob/main/docs/source/en/index.md" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/yhjedward3021454052-star/api/blob/main/docs/source/en/index.md" class="fa fa-github"> 在 GitHub 上编辑</a>
       </li>
-  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Multilingual Documentation" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="顺序式页面导航">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Multilingual Documentation" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
@@ -212,10 +193,6 @@ document.addEventListener('DOMContentLoaded', function() {
 #theme-toggle:hover {
     background: rgba(0, 122, 255, 0.1);
 }
-
-.hidden-section {
-    display: none !important;
-}
 </style>
 
 <script>
@@ -252,16 +229,6 @@ function toggleTheme() {
     setTheme(currentTheme === 'light' ? 'dark' : 'light');
 }
 
-function switchLanguage(lang) {
-    localStorage.setItem('language', lang);
-    const currentPath = window.location.pathname;
-    if (lang === 'zh') {
-        window.location.href = currentPath.replace('/en/', '/zh_CN/');
-    } else {
-        window.location.href = currentPath.replace('/zh_CN/', '/en/');
-    }
-}
-
 window.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
@@ -271,10 +238,10 @@ window.addEventListener('DOMContentLoaded', function() {
            <div itemprop="articleBody">
              
   <section id="welcome-to-multilingual-documentation-site">
-<h1>Welcome to Multilingual Documentation Site<a class="headerlink" href="#welcome-to-multilingual-documentation-site" title="Link to this heading"></a></h1>
+<h1>Welcome to Multilingual Documentation Site<a class="headerlink" href="#welcome-to-multilingual-documentation-site" title="链接到此标题。"></a></h1>
 <p>This is an example of a multilingual documentation site built with Sphinx, supporting language switching.</p>
 <section id="features">
-<h2>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h2>
+<h2>Features<a class="headerlink" href="#features" title="链接到此标题。"></a></h2>
 <ul class="simple">
 <li><p>Multilingual support (English / 中文)</p></li>
 <li><p>Written in Markdown</p></li>
@@ -283,26 +250,26 @@ window.addEventListener('DOMContentLoaded', function() {
 </ul>
 </section>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="链接到此标题。"></a></h2>
 <section id="install-dependencies">
-<h3>Install Dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading"></a></h3>
+<h3>Install Dependencies<a class="headerlink" href="#install-dependencies" title="链接到此标题。"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--break-system-packages<span class="w"> </span>sphinx<span class="w"> </span>sphinx-intl<span class="w"> </span>sphinx-rtd-theme<span class="w"> </span>myst-parser
 </pre></div>
 </div>
 </section>
 <section id="build-documentation">
-<h3>Build Documentation<a class="headerlink" href="#build-documentation" title="Link to this heading"></a></h3>
+<h3>Build Documentation<a class="headerlink" href="#build-documentation" title="链接到此标题。"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html
 </pre></div>
 </div>
 </section>
 <section id="view-documentation">
-<h3>View Documentation<a class="headerlink" href="#view-documentation" title="Link to this heading"></a></h3>
+<h3>View Documentation<a class="headerlink" href="#view-documentation" title="链接到此标题。"></a></h3>
 <p>Open <code class="docutils literal notranslate"><span class="pre">build/en/html/index.html</span></code> for English or <code class="docutils literal notranslate"><span class="pre">build/zh_CN/html/index.html</span></code> for Chinese.</p>
 </section>
 </section>
 <section id="documentation-structure">
-<h2>Documentation Structure<a class="headerlink" href="#documentation-structure" title="Link to this heading"></a></h2>
+<h2>Documentation Structure<a class="headerlink" href="#documentation-structure" title="链接到此标题。"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
 ├── Makefile
 ├── source/
@@ -316,7 +283,7 @@ window.addEventListener('DOMContentLoaded', function() {
 </div>
 </section>
 <section id="tech-stack">
-<h2>Tech Stack<a class="headerlink" href="#tech-stack" title="Link to this heading"></a></h2>
+<h2>Tech Stack<a class="headerlink" href="#tech-stack" title="链接到此标题。"></a></h2>
 <ul class="simple">
 <li><p><strong>Sphinx</strong>: Documentation framework</p></li>
 <li><p><strong>MyST-Parser</strong>: Markdown parser</p></li>
@@ -325,7 +292,7 @@ window.addEventListener('DOMContentLoaded', function() {
 </ul>
 </section>
 <section id="user-guide">
-<h2>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h2>
+<h2>User Guide<a class="headerlink" href="#user-guide" title="链接到此标题。"></a></h2>
 <p>See <a class="reference internal" href="guide.html"><span class="std std-doc">User Guide</span></a>.</p>
 <hr class="docutils" />
 <p>Copyright © 2026 MonkeyCode</p>
@@ -336,20 +303,20 @@ window.addEventListener('DOMContentLoaded', function() {
            </div>
           </div>
 
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Multilingual Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Multilingual Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2026, MonkeyCode.</p>
+    <p>&#169; 版权所有 2026, MonkeyCode。</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
    
 
 </footer>

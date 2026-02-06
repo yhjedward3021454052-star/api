@@ -1,48 +1,16 @@
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-        const menu = document.querySelector('.wy-menu-vertical');
-        const switcherContainer = document.getElementById('switcher-container');
-        
-        if (menu && switcherContainer) {
-            const currentPath = window.location.pathname;
-            const isZh = currentPath.includes('/zh_CN/');
-            
-            switcherContainer.style.display = 'flex';
-            menu.appendChild(switcherContainer);
-            
-            const langIcon = document.getElementById('lang-icon');
-            if (langIcon) {
-                langIcon.innerHTML = isZh ? '🇨🇳' : '🇺🇸';
-            }
-            
-            const menuItems = menu.querySelectorAll('p.caption');
-            menuItems.forEach(item => {
-                const text = item.textContent;
-                const parentList = item.parentElement;
-                
-                if (isZh) {
-                    if (text.includes('English')) {
-                        parentList.style.display = 'none';
-                    }
-                } else {
-                    if (text.includes('中文')) {
-                        parentList.style.display = 'none';
-                    }
-                }
-            });
-        }
-    }, 100);
-});
-</script>
+<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+</form>
 
-<div id="switcher-container" style="display: none;">
+<div id="switcher-container">
     <div class="switcher-item">
         <div class="switcher-icon" title="Language">
             <span id="lang-icon">🇨🇳</span>
             <div class="language-dropdown">
-                <a href="../en/index.html" onclick="switchLanguage('en')">🇺🇸 English</a>
-                <a href="../zh_CN/index.html" onclick="switchLanguage('zh')">🇨🇳 中文</a>
+                <a href="../en/index.html">🇺🇸 English</a>
+                <a href="../zh_CN/index.html">🇨🇳 中文</a>
             </div>
         </div>
     </div>
@@ -53,3 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
         </button>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname;
+    const isZh = currentPath.includes('/zh_CN/');
+    
+    const langIcon = document.getElementById('lang-icon');
+    if (langIcon) {
+        langIcon.innerHTML = isZh ? '🇨🇳' : '🇺🇸';
+    }
+});
+</script>
