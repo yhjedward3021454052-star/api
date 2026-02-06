@@ -111,18 +111,19 @@ div.highlight span {
 div.highlight.with-lines {
     padding-left: 0;
     padding-right: 0;
+    padding-top: 50px;
 }
 
 div.highlight.with-lines pre {
     padding-left: 50px;
     position: relative;
+    margin: 0;
 }
 
 div.highlight.with-lines .line-number {
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
     width: 40px;
     background: var(--line-number-bg);
     border-right: 1px solid var(--line-number-border);
@@ -151,6 +152,7 @@ div.highlight.with-lines .line-number .line-num {
 }
 
 div.highlight.with-lines .highlight-buttons {
+    top: 8px;
     right: 8px;
 }
 
