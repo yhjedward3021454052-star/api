@@ -1,0 +1,14 @@
+{% if languages %}
+<div class="sidebar-section">
+    <h3>Language</h3>
+    <div class="language-list">
+        {% for lang_code, lang_name in languages %}
+            {% if lang_code != current_language %}
+                <a href="{{ pathto(lang_code + '/index', 1) }}" class="language-link">{{ lang_name }}</a>
+            {% else %}
+                <span class="language-current">{{ lang_name }}</span>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
