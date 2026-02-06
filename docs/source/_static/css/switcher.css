@@ -91,7 +91,7 @@ div.highlight {
     background: var(--code-block-bg);
     border: 1px solid var(--code-block-border);
     border-radius: 4px;
-    padding: 12px;
+    padding: 50px 12px 12px 12px;
     margin: 12px 0;
     position: relative;
 }
