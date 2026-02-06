@@ -51,13 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const menuItems = menu.querySelectorAll('p.caption');
             menuItems.forEach(item => {
                 const text = item.textContent;
+                const parentList = item.parentElement;
+                
                 if (isZh) {
                     if (text.includes('English')) {
-                        item.parentElement.classList.add('hidden-section');
+                        parentList.style.display = 'none';
                     }
                 } else {
                     if (text.includes('中文')) {
-                        item.parentElement.classList.add('hidden-section');
+                        parentList.style.display = 'none';
                     }
                 }
             });
