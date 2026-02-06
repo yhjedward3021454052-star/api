@@ -33,92 +33,16 @@
           
           <a href="../index.html" class="icon icon-home">
             Multilingual Documentation Site
-          </a><style>
-#switcher-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 15px;
-    margin-top: 30px;
-    border-top: 1px solid #e1e4e8;
-}
-
-.switcher-item {
-    position: relative;
-}
-
-.switcher-icon {
-    font-size: 20px;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 5px;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.switcher-icon:hover {
-    background: rgba(0, 122, 255, 0.1);
-}
-
-.language-dropdown {
-    display: none;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    border: 1px solid #e1e4e8;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    min-width: 120px;
-    z-index: 1000;
-    margin-bottom: 5px;
-}
-
-.switcher-item:hover .language-dropdown {
-    display: block;
-}
-
-.language-dropdown a {
-    display: block;
-    padding: 10px 15px;
-    color: #2c3e50;
-    text-decoration: none;
-    transition: background 0.2s ease;
-    font-size: 14px;
-}
-
-.language-dropdown a:hover {
-    background: rgba(0, 122, 255, 0.1);
-    color: #007aff;
-}
-
-#theme-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 5px;
-    transition: all 0.2s ease;
-    font-size: 20px;
-}
-
-#theme-toggle:hover {
-    background: rgba(0, 122, 255, 0.1);
-}
-</style>
-
-<script>
+          </a><script>
 document.addEventListener('DOMContentLoaded', function() {
-    const menu = document.querySelector('.wy-menu-vertical');
-    if (menu) {
+    setTimeout(function() {
+        const menu = document.querySelector('.wy-menu-vertical');
         const switcherContainer = document.getElementById('switcher-container');
-        if (switcherContainer) {
+        if (menu && switcherContainer) {
+            switcherContainer.style.display = 'flex';
             menu.appendChild(switcherContainer);
         }
-    }
+    }, 100);
 });
 </script>
 
@@ -196,6 +120,83 @@ document.addEventListener('DOMContentLoaded', function() {
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<style>
+#switcher-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    margin-top: 30px;
+    border-top: 1px solid #e1e4e8;
+}
+
+.switcher-item {
+    position: relative;
+}
+
+.switcher-icon {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.switcher-icon:hover {
+    background: rgba(0, 122, 255, 0.1);
+}
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-width: 120px;
+    z-index: 1000;
+    margin-bottom: 5px;
+}
+
+.switcher-item:hover .language-dropdown {
+    display: block;
+}
+
+.language-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: #2c3e50;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    font-size: 14px;
+}
+
+.language-dropdown a:hover {
+    background: rgba(0, 122, 255, 0.1);
+    color: #007aff;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    font-size: 20px;
+}
+
+#theme-toggle:hover {
+    background: rgba(0, 122, 255, 0.1);
+}
+</style>
+
 <script>
 function setTheme(theme) {
     const sidebar = document.querySelector('.wy-nav-side');

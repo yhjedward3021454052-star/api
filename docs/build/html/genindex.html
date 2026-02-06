@@ -30,7 +30,71 @@
           
           <a href="index.html" class="icon icon-home">
             Multilingual Documentation Site
-          </a><style>
+          </a><script>
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        const menu = document.querySelector('.wy-menu-vertical');
+        const switcherContainer = document.getElementById('switcher-container');
+        if (menu && switcherContainer) {
+            switcherContainer.style.display = 'flex';
+            menu.appendChild(switcherContainer);
+        }
+    }, 100);
+});
+</script>
+
+<div id="switcher-container" style="display: none;">
+    <div class="switcher-item">
+        <div class="switcher-icon" title="Language">
+            🌐
+            <div class="language-dropdown">
+                <a href="../en/index.html">English</a>
+                <a href="../zh_CN/index.html">中文</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="switcher-item">
+        <button id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+            <span id="theme-icon">☀️</span>
+        </button>
+    </div>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="en/index.html">Welcome to Multilingual Documentation Site</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/guide.html">User Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">中文文档:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="zh_CN/index.html">欢迎使用多语言文档站点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zh_CN/guide.html">使用指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Multilingual Documentation Site</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Index</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/yhjedward3021454052-star/api/blob/main/docs/source/genindex" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<style>
 #switcher-container {
     display: flex;
     justify-content: center;
@@ -107,69 +171,6 @@
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const menu = document.querySelector('.wy-menu-vertical');
-    if (menu) {
-        const switcherContainer = document.getElementById('switcher-container');
-        if (switcherContainer) {
-            menu.appendChild(switcherContainer);
-        }
-    }
-});
-</script>
-
-<div id="switcher-container" style="display: none;">
-    <div class="switcher-item">
-        <div class="switcher-icon" title="Language">
-            🌐
-            <div class="language-dropdown">
-                <a href="../en/index.html">English</a>
-                <a href="../zh_CN/index.html">中文</a>
-            </div>
-        </div>
-    </div>
-    
-    <div class="switcher-item">
-        <button id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
-            <span id="theme-icon">☀️</span>
-        </button>
-    </div>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">English Documentation:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="en/index.html">Welcome to Multilingual Documentation Site</a></li>
-<li class="toctree-l1"><a class="reference internal" href="en/guide.html">User Guide</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">中文文档:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="zh_CN/index.html">欢迎使用多语言文档站点</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zh_CN/guide.html">使用指南</a></li>
-</ul>
-
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Multilingual Documentation Site</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Index</li>
-      <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/yhjedward3021454052-star/api/blob/main/docs/source/genindex" class="fa fa-github"> Edit on GitHub</a>
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
 <script>
 function setTheme(theme) {
     const sidebar = document.querySelector('.wy-nav-side');

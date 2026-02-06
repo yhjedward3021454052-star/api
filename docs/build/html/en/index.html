@@ -33,7 +33,86 @@
           
           <a href="../index.html" class="icon icon-home">
             Multilingual Documentation Site
-          </a><style>
+          </a><script>
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        const menu = document.querySelector('.wy-menu-vertical');
+        const switcherContainer = document.getElementById('switcher-container');
+        if (menu && switcherContainer) {
+            switcherContainer.style.display = 'flex';
+            menu.appendChild(switcherContainer);
+        }
+    }, 100);
+});
+</script>
+
+<div id="switcher-container" style="display: none;">
+    <div class="switcher-item">
+        <div class="switcher-icon" title="Language">
+            🌐
+            <div class="language-dropdown">
+                <a href="../en/index.html">English</a>
+                <a href="../zh_CN/index.html">中文</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="switcher-item">
+        <button id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+            <span id="theme-icon">☀️</span>
+        </button>
+    </div>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">English Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to Multilingual Documentation Site</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-dependencies">Install Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-documentation">Build Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#view-documentation">View Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-structure">Documentation Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tech-stack">Tech Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-guide">User Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide.html">User Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">中文文档:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zh_CN/index.html">欢迎使用多语言文档站点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zh_CN/guide.html">使用指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Multilingual Documentation Site</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to Multilingual Documentation Site</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/yhjedward3021454052-star/api/blob/main/docs/source/en/index.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Multilingual Documentation" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<style>
 #switcher-container {
     display: flex;
     justify-content: center;
@@ -110,84 +189,6 @@
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const menu = document.querySelector('.wy-menu-vertical');
-    if (menu) {
-        const switcherContainer = document.getElementById('switcher-container');
-        if (switcherContainer) {
-            menu.appendChild(switcherContainer);
-        }
-    }
-});
-</script>
-
-<div id="switcher-container" style="display: none;">
-    <div class="switcher-item">
-        <div class="switcher-icon" title="Language">
-            🌐
-            <div class="language-dropdown">
-                <a href="../en/index.html">English</a>
-                <a href="../zh_CN/index.html">中文</a>
-            </div>
-        </div>
-    </div>
-    
-    <div class="switcher-item">
-        <button id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
-            <span id="theme-icon">☀️</span>
-        </button>
-    </div>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">English Documentation:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to Multilingual Documentation Site</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install-dependencies">Install Dependencies</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build-documentation">Build Documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#view-documentation">View Documentation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#documentation-structure">Documentation Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tech-stack">Tech Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#user-guide">User Guide</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="guide.html">User Guide</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">中文文档:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../zh_CN/index.html">欢迎使用多语言文档站点</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../zh_CN/guide.html">使用指南</a></li>
-</ul>
-
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Multilingual Documentation Site</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Welcome to Multilingual Documentation Site</li>
-      <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/yhjedward3021454052-star/api/blob/main/docs/source/en/index.md" class="fa fa-github"> Edit on GitHub</a>
-      </li>
-  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Multilingual Documentation" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-  </div>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
 <script>
 function setTheme(theme) {
     const sidebar = document.querySelector('.wy-nav-side');
